@@ -39,19 +39,22 @@
         fetch('combined.txt')
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Your internet sucks or it just couldn\'t load the file </3');
+                    throw new Error('Could not load the text file :( idk why it cant load very sad though :(');
                 }
                 return response.text();
             })
             .then(data => {
                 const container = document.getElementById('text-container');
                 container.classList.remove('loading');
-                container.textContent = data;
+                const formattedData = data.replace(/(.)(\[\d{4}\])/g, '$1\n$2');
+                
+                container.textContent = formattedData;
             })
             .catch(error => {
                 document.getElementById('text-container').textContent = 'Error loading file: ' + error.message;
             });
     </script>
+
 
 </body>
 </html>
