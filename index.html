@@ -13,7 +13,30 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-        
+
+        .site-header {
+            margin-bottom: 2.5rem;    
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #2d2d2d;
+            color: #b0b0b0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .site-header a {
+            color: #4a9eff;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .site-header a:hover {
+            color: #82baff;
+            text-decoration: underline;
+        }
+
+        .site-header p {
+            margin: 0.8rem 0;
+        }
         #text-container {
             white-space: pre-wrap;      
             word-wrap: break-word;       
@@ -33,13 +56,13 @@
     </style>
 </head>
 <body>
-    <pre id="text-container" class="loading">Loading danganronpa text dump!!!</pre>
-   
-    <footer class="site-footer">
+        <header class="site-footer">
         <p>If anything doesnt work dm me on discord my @ is crouton.75.(remember the period there its both periods). I'm very inexpireinced at coding but i have a special interest of going through video game files so I know almost no html at all but I wanted to make a text dump for trigger happy havoc (and probably will for the other games eventually) for people as it might be useful.</3</p>
         <p>Created by <a href="https://x.com/gaysc0ttpilgrim" target="_blank" rel="noopener noreferrer">crouton75</a>. (Follow me on twitter I'm so lonely there /hj)</p>
-    </footer>
+    </header>
     
+    <pre id="text-container" class="loading">Loading danganronpa text dump!!!</pre>
+
     <script>
         fetch('combined.txt')
             .then(response => {
