@@ -2,37 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danganronpa Text Dump</title>
     <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
         #text-container {
-            white-space: pre-wrap; 
-            font-family: monospace;
-            background: #f4f4f4;
-            padding: 15px;
-            max-height: 500px;
-            overflow-y: scroll; 
-            border: 1px solid #ccc;
+            white-space: pre-wrap;      
+            word-wrap: break-word;       
+            font-family: "Fira Code", "Consolas", "Ubuntu Mono", monospace;
+            font-size: 0.95rem;
+            background-color: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #2d2d2d;
+            line-height: 1.6;
+        }
+
+        .loading {
+            color: #888;
+            font-style: italic;
         }
     </style>
 </head>
 <body>
-    <div id="text-container">Loading danganronpa file!!</div>
+    <pre id="text-container" class="loading">Loading danganronpa text dump!!!</pre>
 
     <script>
         fetch('combined.txt')
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Your network sucks..');
+                    throw new Error('Your internet sucks or it just couldn\'t load the file </3');
                 }
                 return response.text();
             })
             .then(data => {
-                document.getElementById('text-container').textContent = data;
+                const container = document.getElementById('text-container');
+                container.classList.remove('loading');
+                container.textContent = data;
             })
             .catch(error => {
-                document.getElementById('text-container').textContent = 'Error loading file: ' + error;
+                document.getElementById('text-container').textContent = 'Error loading file: ' + error.message;
             });
     </script>
 
 </body>
 </html>
+
