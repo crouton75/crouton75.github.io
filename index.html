@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Load Large Text File</title>
+    <style>
+        #text-container {
+            white-space: pre-wrap; 
+            font-family: monospace;
+            background: #f4f4f4;
+            padding: 15px;
+            max-height: 500px;
+            overflow-y: scroll; 
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Document Content</h2>
+    <div id="text-container">Loading danganronpa file!!</div>
+
+    <script>
+        fetch('combined.txt')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Your network sucks..');
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('text-container').textContent = data;
+            })
+            .catch(error => {
+                document.getElementById('text-container').textContent = 'Error loading file: ' + error;
+            });
+    </script>
+
+</body>
+</html>
