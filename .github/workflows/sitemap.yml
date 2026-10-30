@@ -2,7 +2,10 @@ name: Generate XML Sitemap
 
 on:
   push:
-    branches: [ main ] # Change to master if your default branch uses that name
+    branches: [ main ]
+
+permissions:
+  contents: write
 
 jobs:
   sitemap_job:
@@ -17,13 +20,13 @@ jobs:
       - name: Generate the sitemap
         uses: cicirello/generate-sitemap@v1
         with:
-          base-url-path: https://crouton75.github.io
+          base-url-path: https://github.io
 
       - name: Commit and push changes
         run: |
           if [[ `git status --porcelain sitemap.xml` ]]; then
             git config --global user.name 'github-actions[bot]'
-            git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git config --global user.email '41898282+github-actions[bot]@://github.com'
             git add sitemap.xml
             git commit -m "Automated sitemap update"
             git push
